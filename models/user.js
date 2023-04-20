@@ -4,9 +4,7 @@ const bcrypt = require("bcryptjs");
 
 const nameRegexp =
   /^[a-zA-Zа-яА-ЯіІїЇґҐщЩьЬЄє'\s]*[a-zA-Zа-яА-ЯіІїЇґҐщЩьЬЄє'][a-zA-Zа-яА-ЯіІїЇґҐщЩьЬЄє'\s]*$/;
-
 const passwordRegexp = /^\S+$/;
-const phoneRegexp = /^\+380\d{9}$/;
 const emailRegexp = /^[^а-яА-ЯёЁ!#$%*/?^`+&{|}~]+@[a-z0-9.-]+\.[a-z]{2,}$/;
 
 const userSchema = new Schema(
@@ -39,12 +37,6 @@ const userSchema = new Schema(
     balance: {
       type: Number,
       default: null,
-    },
-
-    phone: {
-      type: String,
-      required: [true, "PhoneNumber is required"],
-      match: [phoneRegexp, "Please enter a valid phone number"],
     },
 
     image: {
@@ -92,7 +84,6 @@ const joiRegisterSchema = Joi.object({
   password: Joi.string().min(7).pattern(passwordRegexp).required(),
   name: Joi.string().min(2).max(16).pattern(nameRegexp).required(),
   balance: Joi.number(),
-  phone: Joi.string().pattern(phoneRegexp).required(),
 });
 
 const joiLoginSchema = Joi.object({
@@ -118,7 +109,6 @@ const joiEditInfoSchema = Joi.object({
     .min(12)
     .max(50),
   name: Joi.string().min(2).max(16).pattern(nameRegexp),
-  phone: Joi.string().pattern(phoneRegexp),
 });
 
 const joiRefreshTokenSchema = Joi.object({
