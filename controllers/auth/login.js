@@ -29,7 +29,7 @@ const login = async (req, res) => {
     accessToken,
     refreshToken,
   });
-  const { name, phone, balance, image, _id } = updatedUser;
+  const { name, balance, image, _id } = updatedUser;
 
   res.json({
     accessToken,
@@ -38,7 +38,6 @@ const login = async (req, res) => {
       _id,
       email,
       name,
-      phone,
       balance,
       image,
     },
