@@ -16,4 +16,6 @@ router.post(
   ctrlWrapper(ctrl.addTransaction)
 );
 
+router.delete("/:id", auth, ctrlWrapper(ctrl.deleteTransaction));
+
 module.exports = router;
