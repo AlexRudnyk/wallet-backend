@@ -5,6 +5,7 @@ const cors = require("cors");
 const authRouter = require("./routes/api/auth");
 const transactionsRouter = require("./routes/api/transactions");
 const usersRouter = require("./routes/api/users");
+const currenciesRouter = require("./routes/api/currencies");
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use("/api/auth", authRouter);
 app.use("/api/transactions", transactionsRouter);
 app.use("/api/users", usersRouter);
+app.use("/api/currency", currenciesRouter);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
