@@ -27,7 +27,6 @@ const transactionSchema = Schema(
     balance: {
       type: Number,
       default: null,
-      required: true,
     },
     owner: {
       type: Schema.Types.ObjectId,
