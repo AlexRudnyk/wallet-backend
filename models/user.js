@@ -23,7 +23,7 @@ const userSchema = new Schema(
       required: [true, "Password is required"],
       match: [passwordRegexp, "Password can't contain white spaces"],
       minLength: 7,
-      // maxLength: 32,
+      maxLength: 32,
     },
 
     name: {
@@ -36,7 +36,7 @@ const userSchema = new Schema(
 
     balance: {
       type: Number,
-      default: null,
+      default: 0,
     },
 
     image: {
