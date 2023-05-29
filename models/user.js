@@ -14,7 +14,7 @@ const userSchema = new Schema(
       lowercase: true,
       required: [true, "Email is required"],
       match: [emailRegexp],
-      minLength: 5,
+      minLength: 6,
       maxLength: 63,
     },
 
@@ -22,7 +22,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Password is required"],
       match: [passwordRegexp, "Password can't contain white spaces"],
-      minLength: 7,
+      minLength: 6,
       maxLength: 64,
     },
 
@@ -30,7 +30,7 @@ const userSchema = new Schema(
       type: String,
       required: [true, "Name is required"],
       match: [nameRegexp, "Name must be only Arabic letters"],
-      minLength: 2,
+      minLength: 1,
       maxLength: 16,
     },
 
@@ -73,16 +73,16 @@ const joiRegisterSchema = Joi.object({
     .error(
       (errors) =>
         new Error(
-          "enter valid email: min 5, max 63 characters, except .ru. Don't use cyrillic, special symbols, besides '-', '_', '.' "
+          "enter valid email: min 6, max 63 characters, except .ru. Don't use cyrillic, special symbols, besides '-', '_', '.' "
         )
     )
-    .min(5)
+    .min(6)
     .max(63)
     .pattern(emailRegexp)
     .required(),
-  email: Joi.string().min(5).max(63).pattern(emailRegexp).required(),
-  password: Joi.string().min(7).max(64).pattern(passwordRegexp).required(),
-  name: Joi.string().min(2).max(16).pattern(nameRegexp).required(),
+  // email: Joi.string().min(5).max(63).pattern(emailRegexp).required(),
+  password: Joi.string().min(6).max(64).pattern(passwordRegexp).required(),
+  name: Joi.string().min(1).max(16).pattern(nameRegexp).required(),
   balance: Joi.number(),
 });
 
