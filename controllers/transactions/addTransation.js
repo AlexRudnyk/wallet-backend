@@ -10,14 +10,14 @@ const addTransaction = async (req, res) => {
 
   const user = await User.findByIdAndUpdate(
     { _id: owner },
-    { $inc: { balance: finalSum } },
+    { $inc: { balance: finalSum.toFixed(2) } },
     { new: true }
   );
 
   const result = await Transaction.create({
     category: null,
     ...body,
-    balance: user.balance,
+    balance: user.balance.toFixed(2),
     owner,
   });
 
